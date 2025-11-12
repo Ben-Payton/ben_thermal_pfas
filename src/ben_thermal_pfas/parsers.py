@@ -93,7 +93,7 @@ g16_input"""
         charge = None
         spin_multiplicity = None
         input_line = ""
-        this_xyz_molecule = None
+        this_xyz_molecule = []
         check_point_file_name = None
         nproc = 36
         mem = 5
@@ -133,7 +133,7 @@ g16_input"""
                     charge = int(split_line[0])
                     spin_multiplicity = int(split_line[1])
                 else:
-                    this_xyz_molecule = xyz_atom.from_string(line)
+                    this_xyz_molecule.append(xyz_atom.from_string(line))
             if num_blank_lines >2 :
                 bottom_file_inputs += line + "\n"
                 if prev_num_blank_lines != num_blank_lines:
