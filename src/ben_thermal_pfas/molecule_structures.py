@@ -7,10 +7,10 @@ class xyz_atom:
 
     def __str__(self):
 
-        return f"{self.atom_type}    {self.coords[0]}    {self.coords[1]}    {self.coords[2]}"
+        return f"{self.atom_type}    {self.coords[0]:.8f}    {self.coords[1]:.8f}    {self.coords[2]:.8f}"
     
     def as_array(self):
-        return np.array([self.atom_type,self.coords])
+        return [self.atom_type,self.coords]
     
     def translate_atom(self,translation_vector:np.array):
         self.coords = self.coords + translation_vector
@@ -37,7 +37,7 @@ class xyz_molecule:
         return final_string.strip()
     
     def as_array(self):
-        return np.array([atom.as_array() for atom in self.xyz_atom_array])
+        return [atom.as_array() for atom in self.xyz_atom_array]
     
     def add_atom(self,new_xyz_atom:xyz_atom):
         np.append(self.xyz_atom_array,new_xyz_atom)

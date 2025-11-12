@@ -97,7 +97,7 @@ g16_input"""
         check_point_file_name = None
         nproc = 36
         mem = 5
-        notes_line = None
+        notes_line = ""
         bottom_file_inputs = ""
 
         with open(file_name,"r") as file:
@@ -122,9 +122,9 @@ g16_input"""
             if line[0] == "#" or input_line !="" and num_blank_lines == 0:
                 split_line = line.split()
                 if line[0][0] == "#":
-                    input_line += " ".join(line[1:])
+                    input_line += " ".join(split_line[1:])
                 else:
-                    input_line += " ".join(line[1:])
+                    input_line += " ".join(split_line[1:])
             if num_blank_lines == 1:
                 notes_line += line
             if num_blank_lines == 2:
@@ -134,7 +134,7 @@ g16_input"""
                     spin_multiplicity = int(split_line[1])
                 else:
                     this_xyz_molecule.append(xyz_atom.from_string(line))
-            if num_blank_lines >2 :
+            if num_blank_lines >=3 :
                 bottom_file_inputs += line + "\n"
                 if prev_num_blank_lines != num_blank_lines:
                     bottom_file_inputs += "\n"
