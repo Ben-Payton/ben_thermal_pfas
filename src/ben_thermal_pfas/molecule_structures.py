@@ -7,7 +7,7 @@ class xyz_atom:
 
     def __str__(self):
 
-        return f"{self.atom_type}    {self.coords[0]}    {self.coords[1]}    {self.coords[2]}\n"
+        return f"{self.atom_type}    {self.coords[0]}    {self.coords[1]}    {self.coords[2]}"
     
     def as_array(self):
         return np.array([self.atom_type,self.coords])
@@ -33,8 +33,8 @@ class xyz_molecule:
     def __str__(self):
         final_string = ""
         for atom in self.xyz_atom_array:
-            final_string += str(atom)
-        return final_string
+            final_string += str(atom)+"\n"
+        return final_string.strip()
     
     def as_array(self):
         return np.array([atom.as_array() for atom in self.xyz_atom_array])
