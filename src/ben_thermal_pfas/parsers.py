@@ -103,7 +103,7 @@ g16_input"""
         with open(file_name,"r") as file:
             file_lines = file.readlines()
         
-        file_line = [line.strip() for line in file_lines]
+        file_lines = [line.strip() for line in file_lines]
 
         prev_num_blank_lines = 0
         num_blank_lines = 0
